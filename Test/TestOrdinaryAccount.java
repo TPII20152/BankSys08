@@ -22,24 +22,35 @@ public class TestOrdinaryAccount {
 	}
 
 	@Test
+	public void testDebit(){
+		ac = new OrdinaryAccount("01");
+		try {
+			ac.credit(100);
+		} catch (NegativeAmountException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			ac.debit(50);
+		} catch (NegativeAmountException e) {
+			e.printStackTrace();
+		} catch (InsufficientFundsException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(ac.getBalance(),50,0);
+	}
+	@Test(expected=NegativeAmountException.class)
 	public void testDebitNegative() throws NegativeAmountException, InsufficientFundsException {
 		ac = new OrdinaryAccount("01");
-		try{
 		ac.debit(-100);
-		} catch( NegativeAmountException e){
-			assertEquals(1,1,0);
-		}
 	}
 	
-	@Test
+	@Test(expected=InsufficientFundsException.class)
 	public void testDebitPositive() throws NegativeAmountException, InsufficientFundsException{
 		ac = new OrdinaryAccount("01");
-		try{
 			ac.credit(100);
 			ac.debit(120);
-		} catch (InsufficientFundsException e){
-			assertEquals(1,1,0);
-		}
 	}
 	@Test
 	public void testOrdinaryAccount() {
