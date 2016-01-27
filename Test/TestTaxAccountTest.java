@@ -4,17 +4,17 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import banksys.account.OrdinaryAccount;
+import banksys.account.TaxAccount;
 import banksys.account.exception.InsufficientFundsException;
 import banksys.account.exception.NegativeAmountException;
 
 
-public class TestOrdinaryAccount {
+public class TestTaxAccountTest {
+	
+	TaxAccount ta;
 
-	OrdinaryAccount ac;
 	@Before
 	public void setUp() throws Exception {
-		
 	}
 
 	@After
@@ -23,28 +23,35 @@ public class TestOrdinaryAccount {
 
 	@Test
 	public void testDebit() throws NegativeAmountException, InsufficientFundsException{
-		ac = new OrdinaryAccount("01");
-			ac.credit(100);
-			ac.debit(50);
-		
-		assertEquals(ac.getBalance(),50,0);
+		ta = new TaxAccount("01");
+		double credit = 200;
+		double debit = 50;
+		ta.credit(credit);
+		ta.debit(debit);
+		double balance = credit - (debit + (debit *0.001));
+		assertEquals(ta.getBalance(),balance,0);
 	}
 	@Test(expected=NegativeAmountException.class)
 	public void testDebitNegative() throws NegativeAmountException, InsufficientFundsException {
-		ac = new OrdinaryAccount("01");
-		ac.debit(-100);
+		ta = new TaxAccount("01");
+		ta.debit(-100);
 	}
 	
 	@Test(expected=InsufficientFundsException.class)
-	public void testDebitPositive() throws NegativeAmountException, InsufficientFundsException{
-		ac = new OrdinaryAccount("01");
-			ac.credit(100);
-			ac.debit(120);
+	public void testDebitPositive() throws NegativeAmountException, InsufficientFundsException {
+		ta = new TaxAccount("01");
+		try {
+			ta.credit(100);
+		} catch (NegativeAmountException e) {
+			e.printStackTrace();
+		}
+		ta.debit(150);
 	}
+
 	@Test
-	public void testOrdinaryAccount() {
+	public void testTaxAccount() {
 		//Code don't have nothing to prevent creating a account that is already created
-		ac = new OrdinaryAccount("01");
+		ta = new TaxAccount("01");
 	}
 
 }
