@@ -9,7 +9,7 @@ import banksys.account.exception.InsufficientFundsException;
 import banksys.account.exception.NegativeAmountException;
 
 
-public class TestTaxAccountTest {
+public class TestTaxAccount {
 	
 	TaxAccount ta;
 
