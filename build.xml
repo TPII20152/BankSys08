@@ -1,0 +1,65 @@
+<project name="BankSys08" basedir="." default="test">
+	<property name="srcDir" value="src" />
+	<property name="testDir" value="Test" />
+	<property name="libDir" value="lib" />
+	<property name="buildDir" value="build" />
+	<property name="reportDir" value="${buildDir}/report" />
+	<property name="classesDir" value="${buildDir}/classes" />
+	<property name="jarDir" value="${buildDir}/jar" />
+
+	<property name="mainClass" value="banksys.atm.ATM24H" />
+
+	<path id="buildClasspath">
+		<pathelement location="lib/junit-4.12.jar" />
+		<pathelement location="lib/hamcrest-core-1.3.jar" />
+		<pathelement location="${jarDir}/BankSys.jar" />
+		<pathelement location="${classesDir}" />
+	</path>
+
+
+	<target name="clean">
+		<delete dir="${buildDir}" />
+	</target>
+
+	<target name="compile">
+		<mkdir dir="${classesDir}" />
+		<javac includeantruntime="yes" srcdir="${srcDir}" destdir="${classesDir}">
+			<classpath refid="buildClasspath" />
+		</javac>
+	</target>
+
+	<target name="test" depends="clean,jar">
+		<mkdir dir="${reportDir}" />
+		<javac includeantruntime="yes" srcdir="${testDir}" destdir="${classesDir}">
+			<classpath refid="buildClasspath" />
+		</javac>
+
+		<junit printsummary="yes" haltonfailure="no">
+			<classpath refid="buildClasspath" />
+
+			<formatter type="plain" />
+			<formatter type="xml" />
+
+			<batchtest fork="yes" todir="${reportDir}">
+				<fileset dir="${testDir}">
+					<include name="**/*Test*.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+	<target name="jar" depends="compile">
+		<mkdir dir="${jarDir}" />
+		<jar destfile="${jarDir}/${ant.project.name}.jar" basedir="${classesDir}">
+			<manifest>
+				<attribute name="Main-Class" value="${mainClass}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="run" depends="jar">
+		<java jar="${jarDir}/${ant.project.name}.jar" fork="true" />
+	</target>
+	<target name="clean-build" depends="clean,jar" />
+	<target name="main" depends="clean,run" />
+</project>
