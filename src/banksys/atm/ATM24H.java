@@ -7,6 +7,7 @@ import banksys.account.OrdinaryAccount;
 import banksys.account.SavingsAccount;
 import banksys.account.SpecialAccount;
 import banksys.account.TaxAccount;
+import banksys.control.AccountController;
 import banksys.control.BankController;
 import banksys.control.exception.BankTransactionException;
 import banksys.persistence.AccountVector;
@@ -17,6 +18,7 @@ public class ATM24H {
 
 	public static void main(String[] args) {
 		BankController bank = new BankController(new AccountVector());
+		AccountController accountController = new AccountController(bank.getRepository());
 		boolean loop = true;
 		while (loop) {
 			switch (mainMenu()) {
@@ -61,7 +63,7 @@ public class ATM24H {
 				System.out.println("Enter the amount to be credited: ");
 				double amount = scanner.nextDouble();
 				try {
-					bank.doCredit(number, amount);
+					accountController.doCredit(number, amount);
 					System.out.println("Operation was successful!");
 				} catch (BankTransactionException bte) {
 					System.out.println("Error: " + bte.getMessage());
@@ -74,7 +76,7 @@ public class ATM24H {
 				System.out.println("Enter the amount to be debited: ");
 				amount = scanner.nextDouble();
 				try {
-					bank.doDebit(number, amount);
+					accountController.doDebit(number, amount);
 					System.out.println("Operation was successful!");
 				} catch (BankTransactionException bte) {
 					System.out.println("Error: " + bte.getMessage());
@@ -90,7 +92,7 @@ public class ATM24H {
 				amount = scanner.nextDouble();
 
 				try {
-					bank.doTransfer(fromNumber, toNumber, amount);
+					accountController.doTransfer(fromNumber, toNumber, amount);
 					System.out.println("Operation was successful!");
 				} catch (BankTransactionException bte) {
 					System.out.println("Error: " + bte.getMessage());
@@ -102,7 +104,7 @@ public class ATM24H {
 				number = scanner.next();
 				try {
 					System.out.println("OrdinaryAccount number: " + number);
-					System.out.println("Balance: " + bank.getBalance(number));
+					System.out.println("Balance: " + accountController.getBalance(number));
 				} catch (BankTransactionException bte) {
 					System.out.println("Error: " + bte.getMessage());
 				}
@@ -121,7 +123,7 @@ public class ATM24H {
 				System.out.println("Enter the account number: ");
 				number = scanner.next();
 				try {
-					bank.doEarnInterest(number);
+					accountController.doEarnInterest(number);
 					System.out.println("Operation was successful!");
 				} catch (BankTransactionException bte) {
 					System.out.println("Error: " + bte.getMessage());
@@ -132,7 +134,7 @@ public class ATM24H {
 				System.out.println("Enter the account number: ");
 				number = scanner.next();
 				try {
-					bank.doEarnBonus(number);
+					accountController.doEarnBonus(number);
 					System.out.println("Operation was successful!");
 				} catch (BankTransactionException bte) {
 					System.out.println("Error: " + bte.getMessage());
