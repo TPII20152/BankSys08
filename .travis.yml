@@ -7,9 +7,3 @@ jdk:
 
 # run tests, findbugs, pmd and friends using Ant, Maven or Gradle
 script: ant test
-
-notifications:
-  email:
-    recipients:
-      - thiago_nrodrigues@yahoo.com.br
-    on_success: always
