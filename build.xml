@@ -1,6 +1,6 @@
 <project name="BankSys08" basedir="." default="test">
 	<property name="srcDir" value="src" />
-	<property name="testDir" value="Test" />
+	<property name="testDir" value="test" />
 	<property name="libDir" value="lib" />
 	<property name="buildDir" value="build" />
 	<property name="reportDir" value="${buildDir}/report" />
