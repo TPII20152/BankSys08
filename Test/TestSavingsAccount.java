@@ -1,4 +1,3 @@
-package banksys.account;
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -45,4 +44,3 @@ public class TestSavingsAccount {
 	}
 
 }
-
