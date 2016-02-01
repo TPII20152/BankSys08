@@ -25,7 +25,7 @@ public class AccountVector implements IAccountRepository {
 	}
 
 	public void create(AbstractAccount account) throws AccountCreationException {
-		if (this.findAccount(account.getNumber()) != null) {
+		if (this.findAccount(account.getNumber()) == null) {
 			this.accounts.addElement(account);
 		} else {
 			throw new AccountCreationException("OrdinaryAccount alredy exist!", account.getNumber());
