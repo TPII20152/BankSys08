@@ -2,6 +2,7 @@ package banksys.control;
 
 import banksys.account.AbstractAccount;
 import banksys.control.exception.BankTransactionException;
+import banksys.persistence.AccountLog;
 import banksys.persistence.IAccountRepository;
 import banksys.persistence.exception.AccountCreationException;
 import banksys.persistence.exception.AccountDeletionException;
@@ -24,6 +25,7 @@ public class BankController {
 		} catch (AccountCreationException ace) {
 			throw new BankTransactionException(ace);
 		}
+		AccountLog.logRecord(account.getNumber(), "created");
 	}
 
 	public void removeAccount(String number) throws BankTransactionException {
@@ -32,5 +34,6 @@ public class BankController {
 		} catch (AccountDeletionException ade) {
 			throw new BankTransactionException(ade);
 		}
+		AccountLog.logRecord(number, "deleted");
 	}
 }

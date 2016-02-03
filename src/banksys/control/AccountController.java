@@ -9,6 +9,7 @@ import banksys.account.exception.InsufficientFundsException;
 import banksys.control.exception.IncompatibleAccountException;
 import banksys.account.SavingsAccount;
 import banksys.account.SpecialAccount;
+import banksys.persistence.AccountLog;
 import banksys.persistence.IAccountRepository;
 
 public class AccountController {
@@ -31,6 +32,7 @@ public class AccountController {
 		} catch (NegativeAmountException nae) {
 			throw new BankTransactionException(nae);
 		}
+		AccountLog.logRecord(number, "credited", amount);
 	}
 
 	public void doTransfer(String fromNumber, String toNumber, double amount)
@@ -55,6 +57,7 @@ public class AccountController {
 		} catch (NegativeAmountException nae) {
 			throw new BankTransactionException(nae);
 		}
+		AccountLog.logRecord(fromNumber,toNumber, "transfered", amount);
 	}
 
 	public void doDebit(String number, double amount) throws BankTransactionException {
@@ -71,6 +74,7 @@ public class AccountController {
 		} catch (NegativeAmountException nae) {
 			throw new BankTransactionException(nae);
 		}
+		AccountLog.logRecord(number, "debited", amount);
 	}
 
 	public double getBalance(String number) throws BankTransactionException {
@@ -96,6 +100,7 @@ public class AccountController {
 		} else {
 			throw new IncompatibleAccountException(number);
 		}
+		AccountLog.logRecord(number, "earned interest");
 	}
 
 	public void doEarnBonus(String number)
@@ -111,5 +116,6 @@ public class AccountController {
 		} else {
 			throw new IncompatibleAccountException(number);
 		}
+		AccountLog.logRecord(number, "earned bonus");
 	}
 }
