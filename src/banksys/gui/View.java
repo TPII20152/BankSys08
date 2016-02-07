@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 //import javax.swing.JTextField;
 
-//import banksys.gui.MyJLabelVersion; 
+//import banksys.gui.MyJLabelVersion;
 
 @SuppressWarnings("serial")
 public class View extends JFrame {
@@ -129,7 +129,7 @@ public class View extends JFrame {
     return mainScreen;
   }
   public static void main(String[]args){
-	  new View();
+    new View();
   }
   public Font getMainFont() {
     return mainFont;

@@ -13,33 +13,33 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class ViewRegister extends JFrame{
 
-	
+
 	private JButton OrdinaryButton;
 	private JButton TaxButton;
 	private JButton SavingButton;
 	private JButton SpecialButton;
 	private JButton MainMenuButton;
-	
-	
+
+
 	private static Font mainFont = new Font("Serif", Font.BOLD, 15);
 
 	public ViewRegister(){
-		
+
 		super("Bank System");
 		Container container = getContentPane();
-		
+
 		JPanel centro = new JPanel();
 		JPanel east = new JPanel();
-		
+
 		east = getBotoesCadastro();
 		centro = getMainScream();
-		
+
 
 		container.setLayout(new BorderLayout());
 		container.add(BorderLayout.CENTER, centro);
 		container.add(BorderLayout.EAST, east);
-		
-		
+
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(800, 500);
 		setVisible(true);
@@ -47,10 +47,10 @@ public class ViewRegister extends JFrame{
 	}
 
 	public JPanel getBotoesCadastro(){
-		
+
 		JPanel cadastro = new JPanel();
 		cadastro.setLayout(new GridLayout(5, 1));
-		
+
 		OrdinaryButton = new JButton("Ordinary");
 		OrdinaryButton.setFont(mainFont);
 		TaxButton = new JButton("Tax");
@@ -61,8 +61,8 @@ public class ViewRegister extends JFrame{
 		SavingButton.setFont(mainFont);
 		MainMenuButton = new JButton("<<");
 		MainMenuButton.setFont(mainFont);
-		
-		
+
+
 		cadastro.add(OrdinaryButton);
 		cadastro.add(SpecialButton);
 		cadastro.add(SavingButton);
@@ -94,11 +94,11 @@ public class ViewRegister extends JFrame{
 		mainScream.add(new MyJLabelVersion(text, mainFont));
 		mainScream.add(new MyJLabelVersion(line11, mainFont));
 		mainScream.add(new MyJLabelVersion("Your security is guaranteed using our Bank!", mainFont));
-			
+
 		return mainScream;
 	}
 
-	
+
 	/* GETTERS FOR BUTTONS */
 	public JButton getOrdinaryButton() {
 		return OrdinaryButton;
@@ -128,9 +128,8 @@ public class ViewRegister extends JFrame{
 	public static void main(String[]args){
 		new ViewRegister();
 	}*/
-	
-}
 
+}
 
 
 
