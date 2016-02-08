@@ -118,4 +118,5 @@ public class AccountController {
 		}
 		AccountLog.logRecord(number, "earned bonus");
 	}
+	
 }

@@ -36,4 +36,5 @@ public class BankController {
 		}
 		AccountLog.logRecord(number, "deleted");
 	}
+	
 }
