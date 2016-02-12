@@ -65,7 +65,7 @@ public class ViewController {
         } else if (e.getSource() == view.getShowBalance()) {
           input = JOptionPane.showInputDialog("Enter the account Number.");
           try {
-            JOptionPane.showMessageDialog(null, operation.getBalance(input));
+            JOptionPane.showMessageDialog(null,"Balance: "+ operation.getBalance(input));
           } catch (BankTransactionException bte) {
             JOptionPane.showMessageDialog(null, "Error: " + bte.getMessage());
           }
@@ -122,5 +122,7 @@ public class ViewController {
   public void confirmOperation() {
     JOptionPane.showMessageDialog(null, "Operation was successful");
   }
-
+  public void shutView(){
+    view.dispose();
+  }
 }

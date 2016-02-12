@@ -3,6 +3,7 @@ package banksys.gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+
 import banksys.control.exception.BankTransactionException;
 
 public class DoCreditController {
@@ -10,6 +11,8 @@ public class DoCreditController {
   private DoCreditView cv;
   private ActionListener actionListener;
   private String input;
+  private View view;
+  private ViewController viewController;
   double value;
 
   public DoCreditController(DoCreditView _cv) {
@@ -32,7 +35,12 @@ public class DoCreditController {
         }
         try {
           ViewController.operation.doCredit(input, value);// do the
-                                  // credit....
+          cv.dispose();                 // credit....
+          view = new View();
+          //main menu
+          viewController = new ViewController(view);
+          viewController.control();
+
         } catch (BankTransactionException bte) {
           JOptionPane.showMessageDialog(null,"Error: " + bte.getMessage());
         }

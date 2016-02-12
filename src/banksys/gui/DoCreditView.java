@@ -18,7 +18,7 @@ public class DoCreditView extends JFrame{
   private JTextField account;
   private JTextField value;
   private JButton done;
-  private static Font mainFont = new Font("Serif", Font.BOLD, 15);
+  private static Font mainFont = new Font("serif", Font.BOLD, 15);
 
   public DoCreditView(){
 

@@ -1,6 +1,7 @@
 package banksys.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -39,7 +40,6 @@ public class View extends JFrame {
     JPanel east = new JPanel();
     east = getBotoes();
     center = getMainScream();
-
 
     container.setLayout(new BorderLayout());
     container.add(BorderLayout.CENTER, center);
@@ -126,6 +126,7 @@ public class View extends JFrame {
     mainScreen.add(new MyJLabelVersion(line11, mainFont));
     mainScreen.add(new MyJLabelVersion(text, mainFont));
     mainScreen.add(new MyJLabelVersion("Your security is guaranteed using our Bank!", mainFont));
+    mainScreen.setBackground(new Color(153, 255, 255));
     return mainScreen;
   }
   public static void main(String[]args){

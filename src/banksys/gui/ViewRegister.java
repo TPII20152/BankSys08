@@ -1,6 +1,7 @@
 package banksys.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -21,7 +22,7 @@ public class ViewRegister extends JFrame{
   private JButton MainMenuButton;
 
 
-  private static Font mainFont = new Font("Serif", Font.BOLD, 15);
+  private static Font mainFont = new Font("serif", Font.BOLD, 15);
 
   public ViewRegister(){
 
@@ -94,6 +95,7 @@ public class ViewRegister extends JFrame{
     mainScream.add(new MyJLabelVersion(text, mainFont));
     mainScream.add(new MyJLabelVersion(line11, mainFont));
     mainScream.add(new MyJLabelVersion("Your security is guaranteed using our Bank!", mainFont));
+    mainScream.setBackground(new Color(153, 255, 255));
 
     return mainScream;
   }

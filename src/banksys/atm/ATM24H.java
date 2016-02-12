@@ -1,7 +1,8 @@
 package banksys.atm;
 
-import java.util.Scanner;
 
+/*
+import java.util.Scanner;
 import banksys.account.AbstractAccount;
 import banksys.account.OrdinaryAccount;
 import banksys.account.SavingsAccount;
@@ -11,12 +12,13 @@ import banksys.control.AccountController;
 import banksys.control.BankController;
 import banksys.control.exception.BankTransactionException;
 import banksys.persistence.AccountVector;
+*/
 import banksys.gui.ViewController;
 import banksys.gui.View;
 
 public class ATM24H {
 
-  private static Scanner scanner = new Scanner(System.in);
+  //private static Scanner scanner = new Scanner(System.in);
 
   // using the graphic user interface "GUI"......
   public static View v = new View();
@@ -27,10 +29,10 @@ public class ATM24H {
   public static void main(String[] args) {
 
     // To use interface, just use vc.control(); and comment the rest of main class
-    //vc.control();
+    vc.control();
 
 
-    ///*
+    /*
 
     BankController bank = new BankController(new AccountVector());
     AccountController accountController = new AccountController(bank.getRepository());
@@ -165,9 +167,9 @@ public class ATM24H {
         break;
       }
     }
-    //*/
+    */
   }
-
+  /*
   private static int mainMenu() {
     System.out.println("================================");
     System.out.println("Wellcome to the Our Bank");
@@ -200,5 +202,5 @@ public class ATM24H {
     System.out.println("Enter the desired option: ");
     return scanner.nextInt();
   }
-
+   */
 }
