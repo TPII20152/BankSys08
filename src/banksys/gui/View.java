@@ -5,11 +5,16 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
-//import java.awt.Rectangle;
 
+//import java.awt.Rectangle;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JToolBar;
 //import javax.swing.JTextField;
 
 //import banksys.gui.MyJLabelVersion;
@@ -17,121 +22,178 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class View extends JFrame {
 
-  private JButton newAccount;
-  private JButton doCredit;
-  private JButton doDebit;
-  private JButton doTransfer;
-  private JButton showBalance;
-  private JButton removeAccount;
-  private JButton earnIterest;
-  private JButton earnBonus;
+  private MyJButtonVersion newAccount;
+  private MyJButtonVersion doCredit;
+  private MyJButtonVersion doDebit;
+  private MyJButtonVersion doTransfer;
+  private MyJButtonVersion showBalance;
+  private MyJButtonVersion removeAccount;
+  private MyJButtonVersion earnIterest;
+  private MyJButtonVersion earnBonus;
+  private MyJButtonVersion mainPigButton;
 
+  private JMenuBar menuBar;
+  private JToolBar toolBar;
+  private JMenu FileMenu;
+  private JMenu CreditsMenu;
 
-  private static Font mainFont = new Font("serif", Font.BOLD, 15);
+  private JMenuItem ExitMenuItem;
+  private JMenuItem NewAccountMenuItem;
+  private JMenuItem AboutMenuItem;
+  private JMenuItem DoCreditMenuItem;
+  private JMenuItem DoDebitMenuItem;
+  private JMenuItem ShowBalanceMenuItem;
+  private JMenuItem DoTransferMenuItem;
+  private JMenuItem RemoveAccountMenuItem;
+  private JMenuItem EarnBonusMenuItem;
+  private JMenuItem EarnIterestMenuItem;
+  private JMenuItem CreditsMenuItem;
 
+  public Font mainFont = new Font("serif", Font.BOLD, 15);
 
+  //
 
   public View() {
 
     super("Bank System");
+
     Container container = getContentPane();
 
     JPanel center = new JPanel();
     JPanel east = new JPanel();
     east = getBotoes();
-    center = getMainScream();
 
-    container.setLayout(new BorderLayout());
+    toolBar = new JToolBar();
+    toolBar.setFont(mainFont);
+    menuBar = new JMenuBar();
+    menuBar.setFont(mainFont);
+    toolBar.add(menuBar);
+
+    AboutMenuItem = new JMenuItem("About This   ");
+    AboutMenuItem.setFont(mainFont);
+
+    ExitMenuItem = new JMenuItem("Exit          ");
+    ExitMenuItem.setFont(mainFont);
+
+    NewAccountMenuItem = new JMenuItem("New Account    ");
+    NewAccountMenuItem.setFont(mainFont);
+
+    DoCreditMenuItem = new JMenuItem("Do Credit      ");
+    DoCreditMenuItem.setFont(mainFont);
+
+    DoDebitMenuItem = new JMenuItem("Do Debit      ");
+    DoDebitMenuItem.setFont(mainFont);
+
+    DoTransferMenuItem = new JMenuItem("Do Transfer       ");
+    DoTransferMenuItem.setFont(mainFont);
+
+    ShowBalanceMenuItem = new JMenuItem("Show Balance    ");
+    ShowBalanceMenuItem.setFont(mainFont);
+
+    RemoveAccountMenuItem = new JMenuItem("Remove Account     ");
+    RemoveAccountMenuItem.setFont(mainFont);
+
+    EarnIterestMenuItem = new JMenuItem("Earn Iterest   ");
+    EarnIterestMenuItem.setFont(mainFont);
+
+    EarnBonusMenuItem = new JMenuItem("Earn Bonus    ");
+    EarnBonusMenuItem.setFont(mainFont);
+
+    FileMenu = new JMenu(" File  ");
+    FileMenu.setFont(mainFont);
+    menuBar.add(FileMenu);
+    FileMenu.add(NewAccountMenuItem);
+    FileMenu.add(DoDebitMenuItem);
+    FileMenu.add(DoTransferMenuItem);
+    FileMenu.add(ShowBalanceMenuItem);
+    FileMenu.add(RemoveAccountMenuItem);
+    FileMenu.add(EarnIterestMenuItem);
+    FileMenu.add(EarnBonusMenuItem);
+    FileMenu.add(AboutMenuItem);
+    FileMenu.add(ExitMenuItem);
+
+    CreditsMenuItem = new JMenuItem(" Creditis ");
+    CreditsMenuItem.setFont(mainFont);
+
+    CreditsMenu = new JMenu(" Credits ");
+    CreditsMenu.setFont(mainFont);
+    menuBar.add(CreditsMenu);
+    CreditsMenu.add(CreditsMenuItem);
+
+    mainPigButton = new MyJButtonVersion();
+    mainPigButton.setToolTipText("Bank System");
+    mainPigButton.setBackground(new Color(255, 255, 255));
+    mainPigButton.setIcon(new ImageIcon(getClass().getResource("icons/tool9.png")));
+    center.add(mainPigButton);
+
+    container.setLayout(new BorderLayout(0, 0));
+    container.add(BorderLayout.NORTH, toolBar);
     container.add(BorderLayout.CENTER, center);
     container.add(BorderLayout.EAST, east);
 
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setSize(800, 500);
+    setSize(585, 532);
     setVisible(true);
+    setResizable(false);
     setLocationRelativeTo(null);
   }
+
+
 
   public JPanel getBotoes() {
 
     JPanel container2 = new JPanel();
     container2.setLayout(new GridLayout(8, 1));
-    newAccount = new JButton("New Account");
-    newAccount.setFont(mainFont);
+    newAccount = new MyJButtonVersion();
+    newAccount.setToolTipText("New Account");
+    newAccount.setBackground(new Color(255, 255, 255));
+    newAccount.setIcon(new ImageIcon(getClass().getResource("icons/label39.png")));
 
     container2.add(newAccount);
-    doCredit = new JButton("Do Credit");
-    doCredit.setFont(mainFont);
-
+    doCredit = new MyJButtonVersion();
+    doCredit.setToolTipText("Do Credit");
+    doCredit.setBackground(new Color(255, 255, 255));
+    doCredit.setIcon(new ImageIcon(getClass().getResource("icons/money132.png")));
     container2.add(doCredit);
-    doDebit = new JButton("Do Debit");
-    doDebit.setFont(mainFont);
 
+    doDebit = new MyJButtonVersion();
+    doDebit.setToolTipText("Do Debit");
+    doDebit.setBackground(new Color(255, 255, 255));
+    doDebit.setIcon(new ImageIcon(getClass().getResource("icons/payment7.png")));
     container2.add(doDebit);
-    doTransfer = new JButton("Do Transfer");
-    doTransfer.setFont(mainFont);
 
+    doTransfer = new MyJButtonVersion();
+    doTransfer.setToolTipText("Do Transfer");
+    doTransfer.setBackground(new Color(255, 255, 255));
+    doTransfer.setIcon(new ImageIcon(getClass().getResource("icons/direction21.png")));
     container2.add(doTransfer);
-    showBalance = new JButton("Show Balance");
-    showBalance.setFont(mainFont);
 
+    showBalance = new MyJButtonVersion();
+    showBalance.setToolTipText("Show Balance");
+    showBalance.setBackground(new Color(255, 255, 255));
+    showBalance.setIcon(new ImageIcon(getClass().getResource("icons/magnifier13.png")));
     container2.add(showBalance);
-    removeAccount = new JButton("Remove Account");
-    removeAccount.setFont(mainFont);
 
+    removeAccount = new MyJButtonVersion();
+    removeAccount.setToolTipText("Remove Account");
+    removeAccount.setBackground(new Color(255, 255, 255));
+    removeAccount.setIcon(new ImageIcon(getClass().getResource("icons/rubbish7.png")));
     container2.add(removeAccount);
-    earnIterest = new JButton("Earn Iterest");
-    earnIterest.setFont(mainFont);
 
+    earnIterest = new MyJButtonVersion();
+    earnIterest.setToolTipText("Earn Iterest");
+    earnIterest.setBackground(new Color(255, 255, 255));
+    earnIterest.setIcon(new ImageIcon(getClass().getResource("icons/maths76.png")));
     container2.add(earnIterest);
-    earnBonus = new JButton("Earn Bonus");
-    earnBonus.setFont(mainFont);
 
+    earnBonus = new MyJButtonVersion();
+    earnBonus.setToolTipText("Earn Bonus");
+    earnBonus.setBackground(new Color(255, 255, 255));
+    earnBonus.setIcon(new ImageIcon(getClass().getResource("icons/plus2.png")));
     container2.add(earnBonus);
     return container2;
   }
 
-
-  public JPanel getMainScream() {
-
-    String text = "********************************";
-    String line = "Wellcome to the Our Bank";
-    String line1 = "Automated Teller Machine";
-    String line2 = " [1] Add New OrdinaryAccount";
-    String line3 = " [2] Do Credit";
-    String line4 = " [3] Do Debit";
-    String line5 = " [4] Do Transfer";
-    String line6 = " [5] Show Balance";
-    String line7 = " [6] Remove OrdinaryAccount";
-    String line8 = " [7] Earn Iterest";
-    String line9 = " [8] Earn Bonus";
-    String line10 = " [9] Exit";
-    String line11 = "Press your desired option: ";
-
-    JPanel mainScreen = new JPanel();
-
-    mainScreen.setLayout(new GridLayout(20, 1, 0, 0));
-    mainScreen.add(new MyJLabelVersion(text, mainFont));
-    mainScreen.add(new MyJLabelVersion(line, mainFont));
-    mainScreen.add(new MyJLabelVersion(line1, mainFont));
-    mainScreen.add(new MyJLabelVersion(text, mainFont));
-    mainScreen.add(new MyJLabelVersion(line2, mainFont));
-    mainScreen.add(new MyJLabelVersion(line3, mainFont));
-    mainScreen.add(new MyJLabelVersion(line4, mainFont));
-    mainScreen.add(new MyJLabelVersion(line5, mainFont));
-    mainScreen.add(new MyJLabelVersion(line6, mainFont));
-    mainScreen.add(new MyJLabelVersion(line7, mainFont));
-    mainScreen.add(new MyJLabelVersion(line8, mainFont));
-    mainScreen.add(new MyJLabelVersion(line9, mainFont));
-    mainScreen.add(new MyJLabelVersion(line10, mainFont));
-    mainScreen.add(new MyJLabelVersion(line11, mainFont));
-    mainScreen.add(new MyJLabelVersion(text, mainFont));
-    mainScreen.add(new MyJLabelVersion("Your security is guaranteed using our Bank!", mainFont));
-    mainScreen.setBackground(new Color(153, 255, 255));
-    return mainScreen;
-  }
-  public static void main(String[]args){
-    new View();
-  }
   public Font getMainFont() {
     return mainFont;
   }
@@ -143,7 +205,9 @@ public class View extends JFrame {
   public JButton getDoCredit() {
     return doCredit;
   }
-
+  public JMenuItem getDoDebitMenuItem() {
+    return DoDebitMenuItem;
+  }
   public JButton getDoDebit() {
     return doDebit;
   }
@@ -166,6 +230,46 @@ public class View extends JFrame {
 
   public JButton getEarnBonus() {
     return earnBonus;
+  }
+
+  public JButton getMainPigButton() {
+    return mainPigButton;
+  }
+
+  public JMenuItem getExitMenuItem() {
+    return ExitMenuItem;
+  }
+
+  public JMenuItem getNewAccountMenuItem() {
+    return NewAccountMenuItem;
+  }
+
+  public JMenuItem getAboutMenuItem() {
+    return AboutMenuItem;
+  }
+
+  public JMenuItem getDoCreditMenuItem() {
+    return DoCreditMenuItem;
+  }
+
+  public JMenuItem getShowBalanceMenuItem() {
+    return ShowBalanceMenuItem;
+  }
+
+  public JMenuItem getDoTransferMenuItem() {
+    return DoTransferMenuItem;
+  }
+
+  public JMenuItem getRemoveAccountMenuItem() {
+    return RemoveAccountMenuItem;
+  }
+
+  public JMenuItem getEarnBonusMenuItem() {
+    return EarnBonusMenuItem;
+  }
+
+  public JMenuItem getEarnIterestMenuItem() {
+    return EarnIterestMenuItem;
   }
 
 }

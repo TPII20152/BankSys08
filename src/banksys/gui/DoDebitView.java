@@ -24,7 +24,7 @@ public class DoDebitView extends JFrame{
 
     JLabel title = new JLabel("  Input");
     title.setFont(mainFont);
-    JLabel accountNumber = new JLabel("Number:");
+    JLabel accountNumber = new JLabel("Account:");
     accountNumber.setFont(mainFont);
     JLabel valueS = new JLabel(" $: ");
     valueS.setFont(mainFont);
@@ -82,10 +82,6 @@ public class DoDebitView extends JFrame{
   public JTextField getValue() {
     return value;
   }
-  /*
-  public static void main(String[]args){
-    new DoDebitView();
-  }*/
 
 
 }

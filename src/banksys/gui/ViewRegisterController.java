@@ -21,8 +21,6 @@ public class ViewRegisterController {
   private View newView;
   private String input;
 
-
-
   public ViewRegisterController(ViewRegister vc) {
     this.viewRegister = vc;
   }
@@ -38,49 +36,61 @@ public class ViewRegisterController {
         // After the user press some button... dealing with the
         // listeners
 
-        if (e.getSource() == viewRegister.getOrdinaryButton()) {
+        if (e.getSource() == viewRegister.getOrdinaryButton()
+            || e.getSource() == viewRegister.getOrdinaryAccountMenuItem()) {
           input = JOptionPane.showInputDialog("Enter the Ordinary Account Number");
           if (input != null) {
             account = new OrdinaryAccount(input);// crating a new
-                                // OrdinaryAccount
+            // OrdinaryAccount
             confirmOperation();
           } else {
             cancelOperation();
           }
-        } else if (e.getSource() == viewRegister.getTaxButton()) {
+        } else if (e.getSource() == viewRegister.getTaxButton()
+            || e.getSource() == viewRegister.getTaxAccountMenuItem()) {
           input = JOptionPane.showInputDialog("Enter the Tax Account Number");
           if (input != null) {
             account = new TaxAccount(input);// crating a new Tax
-                            // Account
+            // Account
             confirmOperation();
           } else {
             cancelOperation();
           }
-        } else if (e.getSource() == viewRegister.getSavingButton()) {
+        } else if (e.getSource() == viewRegister.getSavingButton()
+            || e.getSource() == viewRegister.getSavingsAccountMenuItem()) {
           input = JOptionPane.showInputDialog("Enter the Savings Account Number");
           if (input != null) {
             account = new SavingsAccount(input);// crating a new
-                              // Savings Account
+            // Savings Account
             confirmOperation();
           } else {
             cancelOperation();
           }
-        } else if (e.getSource() == viewRegister.getSpecialButton()) {
+        } else if (e.getSource() == viewRegister.getSpecialButton()
+            || e.getSource() == viewRegister.getSpecialAccountMenuItem()) {
           input = JOptionPane.showInputDialog("Enter the Special Account Number");
           if (input != null) {
             account = new SpecialAccount(input);// crating a new
-                              // Special Account
+            // Special Account
             confirmOperation();
           } else {
             cancelOperation();
           }
-        } else if (e.getSource() == viewRegister.getMainMenuButton()) {
+        } else if (e.getSource() == viewRegister.getMainMenuButton()
+            || e.getSource() == viewRegister.getHomeMenuItem()) {
           viewRegister.dispose();
           newView = new View();
           newViewController = new ViewController(newView);
           newViewController.control();// Backing for the first
-                        // controller view
+          // controller view
+        } else if (e.getSource() == viewRegister.getMainPigButton()) {
+          JOptionPane.showMessageDialog(null, "Add New OrdinaryAccount\n" + " [1] Ordinary\n"
+              + " [2] Special\n" + " [3] Savings\n" + " [4] Tax\n");
+        }else if( e.getSource() == viewRegister.getExitMenuItem()){
+          viewRegister.dispose();
+          System.exit(0);
         }
+
         // Finally I store the accounts created on the static object
         // bank from
         // viewController
@@ -98,6 +108,13 @@ public class ViewRegisterController {
     viewRegister.getSavingButton().addActionListener(actionListener);
     viewRegister.getSpecialButton().addActionListener(actionListener);
     viewRegister.getMainMenuButton().addActionListener(actionListener);
+    viewRegister.getMainPigButton().addActionListener(actionListener);
+    viewRegister.getOrdinaryAccountMenuItem().addActionListener(actionListener);
+    viewRegister.getSpecialAccountMenuItem().addActionListener(actionListener);
+    viewRegister.getSavingsAccountMenuItem().addActionListener(actionListener);
+    viewRegister.getTaxAccountMenuItem().addActionListener(actionListener);
+    viewRegister.getHomeMenuItem().addActionListener(actionListener);
+    viewRegister.getExitMenuItem().addActionListener(actionListener);
 
   }
 
