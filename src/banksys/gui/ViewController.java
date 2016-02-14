@@ -55,13 +55,13 @@ public class ViewController {
           newViewRgisterController.control();
         } else if (e.getSource() == view.getDoCredit() || e.getSource() == view.getDoCreditMenuItem()) {
           /* Now action goes to DoCreditController..... */
-          view.dispose();
+          //view.dispose();
           dcView = new DoCreditView();
           dcController = new DoCreditController(dcView);
           dcController.control();
         } else if (e.getSource() == view.getDoDebit() || e.getSource() == view.getDoDebitMenuItem()) {
           /* Now action goes to DoDebitController..... */
-          view.dispose();
+          //view.dispose();
           ddView = new DoDebitView();
           ddController = new DoDebitController(ddView);
           ddController.control();
@@ -97,23 +97,35 @@ public class ViewController {
             JOptionPane.showMessageDialog(null, "Error: " + bte.getMessage());
           }
         } else if (e.getSource() == view.getDoTransfer() || e.getSource()==view.getDoTransferMenuItem()) {
+          
           input = JOptionPane.showInputDialog("Enter the origin Account number.");
-          String destiny = JOptionPane.showInputDialog("Enter the destiny Account number.");
-          String amount = JOptionPane.showInputDialog("Enter the amount to be transferred:");
-          double value = 0;
-          try {
-            value = Double.parseDouble(amount);
-          } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(null, "Type Numbers.. Please...");
-            nfe.printStackTrace();
-          }
-          try {
-            operation.doTransfer(input, destiny, value);
-            confirmOperation();
-          } catch (BankTransactionException bte) {
-            System.out.println("Error: " + bte.getMessage());
-          }
+          if (input != null)
+          {
+        	  String destiny = JOptionPane.showInputDialog("Enter the destiny Account number.");
+        	  if (destiny != null)
+        	  {    
+        		  String amount = JOptionPane.showInputDialog("Enter the amount to be transferred:");
+        		  if (amount != null)
+        		  {
+			          double value = 0;
+			          try {
+			            value = Double.parseDouble(amount);
+			          } catch (NumberFormatException nfe) {
+			            JOptionPane.showMessageDialog(null, "Type Numbers, Please...");
+			            //nfe.printStackTrace();
+			          }
+			          
+			          try {
+			            operation.doTransfer(input, destiny, value);
+			            confirmOperation();
+			          } catch (BankTransactionException bte) {
+			        	JOptionPane.showMessageDialog(null, bte.getMessage());
+			          }   
+        		  }
 
+        	  }
+           }
+          
         } else if (e.getSource() == view.getMainPigButton()) {
           JOptionPane.showMessageDialog(null,
               "Wellcome to the Our Bank\n" + "Automated Teller Machine\n"
