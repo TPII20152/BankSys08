@@ -37,3 +37,16 @@ Account nº 01 debited R$50.0 at 14/02/2016 19:44:20
 Account nº 01 credited R$50.0 at 14/02/2016 19:44:20
 Account nº 01 earned interest at 14/02/2016 19:44:20
 Account nÂº 1 debited R$50.0 at 14/02/2016 20:00:40
+Account nº 123 created at 14/02/2016 20:11:51
+Account nº 123 created at 14/02/2016 20:11:51
+Account nº 123 created at 14/02/2016 20:11:51
+Account nº 123 deleted at 14/02/2016 20:11:51
+Account nº 01 transfered to Account nº 02 R$100.0 at 14/02/2016 20:11:51
+Account nº 01 earned bonus at 14/02/2016 20:11:51
+Account nº 01 credited R$100.0 at 14/02/2016 20:11:51
+Account nº 01 debited R$50.0 at 14/02/2016 20:11:51
+Account nº 01 credited R$100.0 at 14/02/2016 20:11:51
+Account nº 01 credited R$100.0 at 14/02/2016 20:11:51
+Account nº 01 debited R$50.0 at 14/02/2016 20:11:51
+Account nº 01 credited R$50.0 at 14/02/2016 20:11:51
+Account nº 01 earned interest at 14/02/2016 20:11:51

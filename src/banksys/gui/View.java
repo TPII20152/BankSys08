@@ -112,7 +112,7 @@ public class View extends JFrame {
     FileMenu.add(AboutMenuItem);
     FileMenu.add(ExitMenuItem);
 
-    CreditsMenuItem = new JMenuItem(" Creditis ");
+    CreditsMenuItem = new JMenuItem(" Credits ");
     CreditsMenuItem.setFont(mainFont);
 
     CreditsMenu = new JMenu(" Credits ");
@@ -271,5 +271,10 @@ public class View extends JFrame {
   public JMenuItem getEarnIterestMenuItem() {
     return EarnIterestMenuItem;
   }
+  
+  public JMenuItem getCreditsMenuItem() {
+    return CreditsMenuItem;
+  }
+  
 
 }

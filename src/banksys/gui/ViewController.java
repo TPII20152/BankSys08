@@ -132,6 +132,13 @@ public class ViewController {
                   + " [1] Add New OrdinaryAccount\n" + " [2] Do Credit\n" + " [3] Do Debit\n"
                   + " [4] Do Transfer\n" + " [5] Show Balance\n" + " [6] Remove OrdinaryAccount\n"
                   + " [7] Earn Iterest\n" + " [8] Earn Bonus\n" + " [9] Exit\n");
+          
+        } else if (e.getSource() == view.getCreditsMenuItem()) {  
+        	JOptionPane.showMessageDialog(null,
+                    "Wellcome to the Our Bank\n" + "Developed by:\n"
+                        + " Thiago Nóbrega\n" + " Jonas Martins\n" + " Arthur Brito\n"
+                        + " Matheus Silva\n");
+        	
         }else if(e.getSource()==view.getExitMenuItem()){
           view.dispose();
           System.exit(0);
@@ -158,6 +165,7 @@ public class ViewController {
     view.getRemoveAccountMenuItem().addActionListener(actionListener);
     view.getEarnBonusMenuItem().addActionListener(actionListener);
     view.getEarnIterestMenuItem().addActionListener(actionListener);
+    view.getCreditsMenuItem().addActionListener(actionListener);
     view.getExitMenuItem().addActionListener(actionListener);
 
   }
