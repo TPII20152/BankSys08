@@ -8,48 +8,41 @@ import banksys.control.exception.BankTransactionException;
 
 public class DoCreditController {
 
-  private DoCreditView cv;
-  private ActionListener actionListener;
-  private String input;
-  private View view;
-  private ViewController viewController;
-  double value;
+	private DoCreditView cv;
+	private ActionListener actionListener;
+	private String input;
+	double value;
 
-  public DoCreditController(DoCreditView _cv) {
-    this.cv = _cv;
-  }
+	public DoCreditController(DoCreditView _cv) {
+		this.cv = _cv;
+	}
 
-  public void control() {
-    actionListener = new ActionListener() {
+	public void control() {
+		actionListener = new ActionListener() {
 
-      @Override
-      public void actionPerformed(ActionEvent e) {
+			@Override
+			public void actionPerformed(ActionEvent e) {
 
-        input = cv.getAccount().getText();
-        value = 0;
-        try {
-          value = Double.parseDouble(cv.getValue().getText());
-        } catch (NumberFormatException nfe) {
-          JOptionPane.showMessageDialog(null, "Type Numbers.. Please...");
-          nfe.printStackTrace();
-        }
-        try {
-          ViewController.operation.doCredit(input, value);// do the
-          cv.dispose();                 // credit....
-          view = new View();
-          //main menu
-          viewController = new ViewController(view);
-          viewController.control();
+				input = cv.getAccount().getText();
+				value = 0;
+				try {
+					value = Double.parseDouble(cv.getValue().getText());
+				} catch (NumberFormatException nfe) {
+					JOptionPane.showMessageDialog(null, "Type Numbers.. Please...");
+					nfe.printStackTrace();
+				}
+				try {
+					ViewController.operation.doCredit(input, value);// do the
+					cv.dispose(); // credit....
+				} catch (BankTransactionException bte) {
+					JOptionPane.showMessageDialog(null, "Error: " + bte.getMessage());
+				}
+				cv.dispose();
+				JOptionPane.showMessageDialog(null, "Done!");
 
-        } catch (BankTransactionException bte) {
-          JOptionPane.showMessageDialog(null,"Error: " + bte.getMessage());
-        }
-        cv.dispose();
-        JOptionPane.showMessageDialog(null, "Done!");
-
-      }
-    };
-    cv.getDone().addActionListener(actionListener);
-  }
+			}
+		};
+		cv.getDone().addActionListener(actionListener);
+	}
 
 }
