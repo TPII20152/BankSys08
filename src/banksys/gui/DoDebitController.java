@@ -36,6 +36,7 @@ public class DoDebitController {
           ViewController.operation.doDebit(input, value);// do the
                                   // debt....
           dv.dispose();
+          view = new View();
           //main menu
           viewController = new ViewController(view);
           viewController.control();

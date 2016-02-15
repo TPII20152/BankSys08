@@ -50,3 +50,7 @@ Account nº 01 credited R$100.0 at 14/02/2016 20:11:51
 Account nº 01 debited R$50.0 at 14/02/2016 20:11:51
 Account nº 01 credited R$50.0 at 14/02/2016 20:11:51
 Account nº 01 earned interest at 14/02/2016 20:11:51
+Account nÂº 1 created at 14/02/2016 22:24:32
+Account nÂº 2 created at 14/02/2016 22:24:35
+Account nÂº 1 credited R$100.0 at 14/02/2016 22:24:42
+Account nÂº 1 debited R$50.0 at 14/02/2016 22:24:53
