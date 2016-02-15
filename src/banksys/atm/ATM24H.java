@@ -26,4 +26,5 @@ public class ATM24H {
   UIManager.put("Panel.background", Color.white);
     vc.control();
   }
+
 }
