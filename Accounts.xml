@@ -1,0 +1,11 @@
+<list>
+  <banksys.account.OrdinaryAccount>
+    <number>123</number>
+    <balance>0.0</balance>
+  </banksys.account.OrdinaryAccount>
+  <banksys.account.SpecialAccount>
+    <number>456</number>
+    <balance>0.0</balance>
+    <bonus>0.0</bonus>
+  </banksys.account.SpecialAccount>
+</list>

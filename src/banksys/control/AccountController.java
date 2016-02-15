@@ -21,12 +21,7 @@ public class AccountController {
 	}
 	
 	public void doCredit(String number, double amount) throws BankTransactionException {
-		AbstractAccount account;
-		try {
-			account = repository.retrieve(number);
-		} catch (AccountNotFoundException anfe) {
-			throw new BankTransactionException(anfe);
-		}
+		AbstractAccount account = findAccount(number);
 		try {
 			account.credit(amount);
 		} catch (NegativeAmountException nae) {
@@ -34,21 +29,11 @@ public class AccountController {
 		}
 		AccountLog.logRecord(number, "credited", amount);
 	}
-
+	
 	public void doTransfer(String fromNumber, String toNumber, double amount)
 			throws BankTransactionException {
-		AbstractAccount fromAccount;
-		try {
-			fromAccount = repository.retrieve(fromNumber);
-		} catch (AccountNotFoundException anfe) {
-			throw new BankTransactionException(anfe);
-		}
-		AbstractAccount toAccount;
-		try {
-			toAccount = repository.retrieve(toNumber);
-		} catch (AccountNotFoundException anfe) {
-			throw new BankTransactionException(anfe);
-		}
+		AbstractAccount fromAccount = findAccount(fromNumber);
+		AbstractAccount toAccount = findAccount(toNumber);
 		try {
 			fromAccount.debit(amount);
 			toAccount.credit(amount);
@@ -59,14 +44,9 @@ public class AccountController {
 		}
 		AccountLog.logRecord(fromNumber,toNumber, "transfered", amount);
 	}
-
+	
 	public void doDebit(String number, double amount) throws BankTransactionException {
-		AbstractAccount account;
-		try {
-			account = repository.retrieve(number);
-		} catch (AccountNotFoundException anfe) {
-			throw new BankTransactionException(anfe);
-		}
+		AbstractAccount account = findAccount(number);
 		try {
 			account.debit(amount);
 		} catch (InsufficientFundsException ife) {
@@ -76,25 +56,15 @@ public class AccountController {
 		}
 		AccountLog.logRecord(number, "debited", amount);
 	}
-
+	
 	public double getBalance(String number) throws BankTransactionException {
-		AbstractAccount conta;
-		try {
-			conta = repository.retrieve(number);
-			return conta.getBalance();
-		} catch (AccountNotFoundException anfe) {
-			throw new BankTransactionException(anfe);
-		}
+		AbstractAccount account = findAccount(number);
+		return account.getBalance();
 	}
-
+	
 	public void doEarnInterest(String number)
 			throws BankTransactionException, IncompatibleAccountException {
-		AbstractAccount auxAccount;
-		try {
-			auxAccount = repository.retrieve(number);
-		} catch (AccountNotFoundException anfe) {
-			throw new BankTransactionException(anfe);
-		}
+		AbstractAccount auxAccount = findAccount(number);
 		if (auxAccount instanceof SavingsAccount) {
 			((SavingsAccount) auxAccount).earnInterest();
 		} else {
@@ -102,21 +72,26 @@ public class AccountController {
 		}
 		AccountLog.logRecord(number, "earned interest");
 	}
-
+	
 	public void doEarnBonus(String number)
 			throws BankTransactionException, IncompatibleAccountException {
-		AbstractAccount auxAccount;
-		try {
-			auxAccount = repository.retrieve(number);
-		} catch (AccountNotFoundException anfe) {
-			throw new BankTransactionException(anfe);
-		}
+		AbstractAccount auxAccount = findAccount(number);
 		if (auxAccount instanceof SpecialAccount) {
 			((SpecialAccount) auxAccount).earnBonus();
 		} else {
 			throw new IncompatibleAccountException(number);
 		}
 		AccountLog.logRecord(number, "earned bonus");
+	}
+	
+	private AbstractAccount findAccount(String number) throws BankTransactionException {
+		AbstractAccount account = null;
+		try {
+			account = repository.retrieve(number);
+		} catch (AccountNotFoundException e) {
+			throw new BankTransactionException(e);
+		}
+		return account;
 	}
 	
 }
