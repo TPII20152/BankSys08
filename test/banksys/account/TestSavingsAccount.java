@@ -35,7 +35,7 @@ public class TestSavingsAccount {
 		balance = balance * 1.001;
 		sa.earnInterest();
 		
-		assertEquals(10000,balance,0);
+		assertEquals(sa.getBalance(),balance,0);
 	}
 	
 	@Test(expected=NegativeAmountException.class)
