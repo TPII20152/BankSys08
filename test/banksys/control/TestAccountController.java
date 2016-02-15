@@ -52,6 +52,8 @@ public class TestAccountController {
 		repository.create(account2);
 		account.credit(100);
 		ac.doTransfer("01", "02", 100);
+		assertEquals(account2.getBalance(),100,0);
+		assertEquals(account.getBalance(),0,0);
 		
 	}
 
@@ -112,7 +114,9 @@ public class TestAccountController {
 		SavingsAccount account = new SavingsAccount("01");
 		AccountController ac = new AccountController (repository);
 		repository.create(account);
+		ac.doCredit("01", 100);
 		ac.doEarnInterest("01");
+		assertEquals(ac.getBalance("01"),100*1.001,0);
 	}
 
 	@Test(expected=IncompatibleAccountException.class)//OrdinaryAccount is not compatible with doEarnBonus Operation
@@ -125,12 +129,15 @@ public class TestAccountController {
 	}
 	
 	@Test
-	public void testDoEarnBonusNormal() throws AccountCreationException, IncompatibleAccountException, BankTransactionException {
+	public void testDoEarnBonusNormal() throws AccountCreationException, IncompatibleAccountException, BankTransactionException, NegativeAmountException {
 		IAccountRepository repository = new AccountVector();
 		SpecialAccount account = new SpecialAccount("01");
 		AccountController ac = new AccountController (repository);
 		repository.create(account);
+		ac.doCredit("01", 100);
 		ac.doEarnBonus("01");
+		account.getBonus();
+		assertEquals(ac.getBalance("01"),100*1.01,0);
 	}
 
 }
