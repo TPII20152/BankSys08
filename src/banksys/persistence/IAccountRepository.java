@@ -16,5 +16,7 @@ public interface IAccountRepository {
 	public AbstractAccount[] list();
 
 	public int mumberOfAccounts();
+
+	public void serializingAccount(String string);
 	
 }

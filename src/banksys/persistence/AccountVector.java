@@ -68,4 +68,10 @@ public class AccountVector implements IAccountRepository {
 		return null;
 	}
 
+	@Override
+	public void serializingAccount(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

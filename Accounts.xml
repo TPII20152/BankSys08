@@ -8,4 +8,12 @@
     <balance>0.0</balance>
     <bonus>0.0</bonus>
   </banksys.account.SpecialAccount>
+  <banksys.account.OrdinaryAccount>
+    <number>1</number>
+    <balance>20.0</balance>
+  </banksys.account.OrdinaryAccount>
+  <banksys.account.OrdinaryAccount>
+    <number>2</number>
+    <balance>5.0</balance>
+  </banksys.account.OrdinaryAccount>
 </list>

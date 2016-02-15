@@ -59,4 +59,10 @@ Account nº 1 credited R$100.0 at 14/02/2016 23:01:11
 Account nº 1 debited R$50.0 at 14/02/2016 23:01:18
 Account nº 1 created at 14/02/2016 23:08:33
 Account nº 1 credited R$100.0 at 14/02/2016 23:08:45
-Account nº 1 debited R$50.0 at 14/02/2016 23:08:53
+Account nº 1 debited R$50.0 at 14/02/2016 23:08:53Account nº 1 created at 15/02/2016 14:00:24
+Account nº 1 credited R$50.0 at 15/02/2016 14:00:49
+Account nº 1 created at 15/02/2016 14:18:59
+Account nº 1 credited R$50.0 at 15/02/2016 14:19:13
+Account nº 1 debited R$25.0 at 15/02/2016 14:20:14
+Account nº 2 created at 15/02/2016 14:20:29
+Account nº 1 transfered to Account nº 2 R$5.0 at 15/02/2016 14:20:38

@@ -10,7 +10,8 @@ import javax.swing.plaf.FontUIResource;
 import banksys.control.AccountController;
 import banksys.control.BankController;
 import banksys.control.exception.BankTransactionException;
-import banksys.persistence.AccountVector;
+import banksys.persistence.AccountPersistence;
+//import banksys.persistence.AccountVector;
 
 public class ViewController {
 
@@ -24,7 +25,7 @@ public class ViewController {
   private DoDebitController ddController;
 
   private ActionListener actionListener;
-  public static BankController bank = new BankController(new AccountVector()); // Same
+  public static BankController bank = new BankController(new AccountPersistence()); // Same
   // as
   // Before.....
   // an vector to keep the accounts created

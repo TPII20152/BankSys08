@@ -25,7 +25,7 @@ public class AccountPersistence implements IAccountRepository, Serializable {
 	
 	public AccountPersistence(){
 		this.accounts = new ArrayList<AbstractAccount>();
-		xstream.alias("Contas", AccountPersistence.class);
+		deserializingAccount("Accounts.xml");
 	}
 
 	@Override

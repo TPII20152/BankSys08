@@ -28,6 +28,7 @@ public class AccountController {
 			throw new BankTransactionException(nae);
 		}
 		AccountLog.logRecord(number, "credited", amount);
+		repository.serializingAccount("Accounts.xml");
 	}
 	
 	public void doTransfer(String fromNumber, String toNumber, double amount)
@@ -43,6 +44,8 @@ public class AccountController {
 			throw new BankTransactionException(nae);
 		}
 		AccountLog.logRecord(fromNumber,toNumber, "transfered", amount);
+		repository.serializingAccount("Accounts.xml");
+
 	}
 	
 	public void doDebit(String number, double amount) throws BankTransactionException {
@@ -55,6 +58,8 @@ public class AccountController {
 			throw new BankTransactionException(nae);
 		}
 		AccountLog.logRecord(number, "debited", amount);
+		repository.serializingAccount("Accounts.xml");
+
 	}
 	
 	public double getBalance(String number) throws BankTransactionException {
@@ -71,6 +76,8 @@ public class AccountController {
 			throw new IncompatibleAccountException(number);
 		}
 		AccountLog.logRecord(number, "earned interest");
+		repository.serializingAccount("Accounts.xml");
+
 	}
 	
 	public void doEarnBonus(String number)
@@ -82,6 +89,8 @@ public class AccountController {
 			throw new IncompatibleAccountException(number);
 		}
 		AccountLog.logRecord(number, "earned bonus");
+		repository.serializingAccount("Accounts.xml");
+
 	}
 	
 	private AbstractAccount findAccount(String number) throws BankTransactionException {

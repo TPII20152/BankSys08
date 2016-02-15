@@ -26,6 +26,8 @@ public class BankController {
 			throw new BankTransactionException(ace);
 		}
 		AccountLog.logRecord(account.getNumber(), "created");
+		repository.serializingAccount("Accounts.xml");
+
 	}
 
 	public void removeAccount(String number) throws BankTransactionException {
@@ -35,6 +37,8 @@ public class BankController {
 			throw new BankTransactionException(ade);
 		}
 		AccountLog.logRecord(number, "deleted");
+		repository.serializingAccount("Accounts.xml");
+
 	}
 	
 }
